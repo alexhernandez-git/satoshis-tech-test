@@ -29,15 +29,17 @@ describe("UserCard Tests", () => {
     component.getByText("011-962-7516");
   });
   test("test if toggle big screen button works", () => {
-    const button = component.getByTestId("small-screen-button");
+    const toggleDiv = component.getByTestId("toggle-div");
+    const button = component.getByTestId("big-screen-button");
     expect(button.innerHTML).toEqual("See more");
-    fireEvent.click(button);
+    fireEvent.mouseDown(toggleDiv);
     expect(button.innerHTML).toEqual("See less");
   });
   test("test if toggle small screen button works", () => {
+    const toggleDiv = component.getByTestId("toggle-div");
     const button = component.getByTestId("small-screen-button");
     expect(button.innerHTML).toEqual("See more");
-    fireEvent.click(button);
+    fireEvent.mouseDown(toggleDiv);
     expect(button.innerHTML).toEqual("See less");
   });
 });

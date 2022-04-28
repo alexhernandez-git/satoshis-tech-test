@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { AppContext, AppContextInterface } from "../../App";
+import { AppContext } from "../../App";
+import { AppContextInterface } from "../../types";
 import SearchInput from "./SearchInput";
 
 const SearchComponent = () => {

@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useRecoilValue } from "recoil";
 import usersState from "../../state/usersState";
 import UserCard from "../UserCard";
 import { UserType } from "../../types";
 import { AppContext } from "../../App";
 import Loader from "../Loader";
+
 const UsersList = () => {
   const users = useRecoilValue(usersState);
   const {

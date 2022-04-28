@@ -6,6 +6,7 @@ const useDarkTheme = () => {
 
   useEffect(() => {
     (async () => {
+      // Check if is a saved configuration of the theme in local storage
       if ((await localStorage.getItem("theme")) === "dark") {
         setIsDark(true);
         document.documentElement.classList.add("dark");
