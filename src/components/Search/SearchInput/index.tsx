@@ -1,11 +1,17 @@
-import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../../../App";
 
 const SearchInput = () => {
+  const {
+    values: { search },
+    handleChange,
+    handleSubmit,
+  } = useContext(AppContext);
   return (
     <div className="min-w-0 flex-1 pr-10">
       <div className="flex items-center">
         <div className="w-full">
-          <form>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="search" className="sr-only">
               Search
             </label>
@@ -26,8 +32,10 @@ const SearchInput = () => {
                 </svg>
               </div>
               <input
+                aria-label="search-input"
                 id="search"
-                value={""}
+                value={search}
+                onChange={handleChange}
                 name="search"
                 className="block w-full bg-white dark:bg-gray-600 border border-gray-300 rounded-3xl py-2 pl-10 pr-3 text-sm placeholder-gray-500 dark:placeholder-gray-100 focus:outline-none dark:text-white focus:text-gray-900 dark:focus:text-white focus:placeholder-gray-400 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                 placeholder="Search"

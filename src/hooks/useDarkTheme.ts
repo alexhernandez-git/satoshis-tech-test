@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useDarkTheme = () => {
   const [isDarkLoading, setIsDarkLoading] = useState<boolean>(true);
   const [isDark, setIsDark] = useState<boolean>(false);
+
   useEffect(() => {
-    if (localStorage.theme === "dark") {
-      setIsDark(true);
-    }
-    setIsDarkLoading(false);
+    (async () => {
+      if ((await localStorage.getItem("theme")) === "dark") {
+        setIsDark(true);
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      }
+      setIsDarkLoading(false);
+    })();
   }, []);
   const handleToggleIsDark = () => {
     if (isDark) {
