@@ -31,7 +31,7 @@ const filters = [
   },
 ];
 
-const Filters = () => {
+const Filters = ({ setPage }: { setPage: Function }) => {
   const {
     mobileFiltersOpen,
     setMobileFiltersOpen,
@@ -50,6 +50,7 @@ const Filters = () => {
         (nationality) => nationality !== value
       );
     }
+    setPage(1);
     setFieldValue("nationalities", newNationalitiesArray);
   };
 

@@ -50,7 +50,7 @@ function App() {
       <Layout>
         <div className={"max-w-3xl mx-auto px-6 flex flex-col lg:px-6 mt-10"}>
           {/* Filters */}
-          <Filters />
+          <Filters setPage={setPage} />
           <main className={`lg:col-span-8 xl:col-span-6 xl:col-start-3`}>
             {/* Search */}
             <Search />
