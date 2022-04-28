@@ -40,11 +40,7 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
         <div
           className="p-3 flex justify-center"
           onClick={() => setPage((page) => page + 1)}
-        >
-          <span className="text-gray-500 dark:text-gray-100 text-sm cursor-pointer">
-            Load more posts
-          </span>
-        </div>
+        ></div>
       </VisibilitySensor>
       {users.loading && (
         <div className="mt-4">
