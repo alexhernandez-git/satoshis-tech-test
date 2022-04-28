@@ -1,27 +1,11 @@
-import {
-  useState,
-  createContext,
-  ChangeEventHandler,
-  FormEventHandler,
-} from "react";
+import { useState, createContext } from "react";
 import Layout from "./components/Layout";
 import Search from "./components/Search";
 import Filters from "./components/Filters";
 import useGetUsers from "./hooks/useGetUsers";
 import UsersList from "./components/UsersList";
 import useFormikForm from "./hooks/useSearchForm";
-
-export interface AppContextInterface {
-  mobileFiltersOpen: boolean;
-  setMobileFiltersOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  values: {
-    search: string;
-    nationalities: string[];
-  };
-  handleChange: ChangeEventHandler<HTMLInputElement>;
-  handleSubmit: FormEventHandler<HTMLFormElement>;
-  setFieldValue: any;
-}
+import { AppContextInterface } from "./types";
 
 export const AppContext = createContext<AppContextInterface>({
   mobileFiltersOpen: false,
@@ -51,17 +35,17 @@ function App() {
     nationalities: values.nationalities,
   });
 
+  const appContextProviderProps = {
+    mobileFiltersOpen,
+    setMobileFiltersOpen,
+    values,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  };
+
   return (
-    <AppContext.Provider
-      value={{
-        mobileFiltersOpen,
-        setMobileFiltersOpen,
-        values,
-        handleChange,
-        handleSubmit,
-        setFieldValue,
-      }}
-    >
+    <AppContext.Provider value={appContextProviderProps}>
       <Layout>
         <div className={"max-w-3xl mx-auto px-6 flex flex-col lg:px-6 mt-10"}>
           {/* Filters */}

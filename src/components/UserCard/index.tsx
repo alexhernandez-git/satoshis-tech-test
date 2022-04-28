@@ -7,6 +7,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 const UserCard = ({ user }: { user: UserType }) => {
   const { show, height, toggleAccordion, closeAccordion, contentSpace } =
     useAccordion();
+
   const userCardRef = useRef<any>();
   useOutsideClick(userCardRef, () => closeAccordion());
 
@@ -14,6 +15,7 @@ const UserCard = ({ user }: { user: UserType }) => {
     <div
       className="mt-4 cursor-pointer"
       ref={userCardRef}
+      data-testid={"toggle-div"}
       onMouseDown={toggleAccordion}
     >
       <ul className="space-y-4">
@@ -60,7 +62,6 @@ const UserCard = ({ user }: { user: UserType }) => {
             </div>
 
             <button
-              onClick={toggleAccordion}
               type="button"
               data-testid={"small-screen-button"}
               className="block text-center sm:hidden w-full items-center px-4 py-2 mt-4 shadow-sm text-sm font-medium rounded-3xl text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:to-pink-600"
@@ -83,7 +84,7 @@ const UserCard = ({ user }: { user: UserType }) => {
                     </p>
                   </div>
                   <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-5 sm:p-0">
-                    <dl className="sm:divide-y sm:divide-gray-200">
+                    <dl className="sm:divide-y sm:divide-gray-200 dark:sm:divide-gray-700">
                       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt className="text-sm font-medium text-gray-500 dark:text-gray-200">
                           Full name

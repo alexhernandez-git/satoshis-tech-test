@@ -1,3 +1,5 @@
+import { ChangeEventHandler, FormEventHandler } from "react";
+
 export type UserType = {
   name: {
     title: string;
@@ -33,4 +35,16 @@ export interface FormikValuesInterface {
 export interface UseFormikInterface {
   initialValues: any;
   onSubmit: Function;
+}
+
+export interface AppContextInterface {
+  mobileFiltersOpen: boolean;
+  setMobileFiltersOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  values: {
+    search: string;
+    nationalities: string[];
+  };
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleSubmit: FormEventHandler<HTMLFormElement>;
+  setFieldValue: any;
 }
