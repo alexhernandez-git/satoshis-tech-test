@@ -5,7 +5,11 @@ import SearchInput from "./SearchInput";
 const SearchComponent = () => {
   const { setMobileFiltersOpen } = useContext<AppContextInterface>(AppContext);
   return (
-    <div className={"flex align-center items-center justify-center my-10"}>
+    <div
+      className={
+        "flex align-center items-center justify-center my-10 lg:sticky top-1 z-20"
+      }
+    >
       {/* Search Input */}
       <SearchInput />
 
