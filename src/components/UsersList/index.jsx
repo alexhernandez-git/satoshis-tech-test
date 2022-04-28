@@ -37,10 +37,7 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
       ))}
 
       <VisibilitySensor onChange={onChangeVisibility}>
-        <div
-          className="p-3 flex justify-center"
-          onClick={() => setPage((page) => page + 1)}
-        ></div>
+        <div className="p-3" onClick={() => setPage((page) => page + 1)}></div>
       </VisibilitySensor>
       {users.loading && (
         <div className="mt-4">
