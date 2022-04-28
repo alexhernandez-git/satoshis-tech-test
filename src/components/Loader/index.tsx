@@ -1,8 +1,12 @@
 import ContentLoader from "react-content-loader";
 const Loader = () => (
   <ContentLoader
-    backgroundColor={"#333"}
-    foregroundColor={"#999"}
+    backgroundColor={
+      document.documentElement.classList.contains("dark") ? "#333" : "#ddd"
+    }
+    foregroundColor={
+      document.documentElement.classList.contains("dark") ? "#999" : "#ccc"
+    }
     height={70}
     speed={1}
     className={"mb-5"}
