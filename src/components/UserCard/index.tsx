@@ -52,22 +52,20 @@ const UserCard = ({ user }: { user: UserType }) => {
                   </span>
                 </div>
               </div>
-              <button
-                type="button"
+              <span
                 data-testid={"big-screen-button"}
                 className="hidden sm:block inline-flex items-center px-4 py-2 shadow-sm text-sm font-medium rounded-3xl text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:to-pink-600"
               >
                 {show ? "See less" : "See more"}
-              </button>
+              </span>
             </div>
 
-            <button
-              type="button"
+            <span
               data-testid={"small-screen-button"}
               className="block text-center sm:hidden w-full items-center px-4 py-2 mt-4 shadow-sm text-sm font-medium rounded-3xl text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:to-pink-600"
             >
               {show ? "See less" : "See more"}
-            </button>
+            </span>
             <div
               ref={contentSpace}
               style={{ maxHeight: `${height}` }}
