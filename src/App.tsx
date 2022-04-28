@@ -21,7 +21,7 @@ export const AppContext = createContext<AppContextInterface>({
 
 function App() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
-
+  const [page, setPage] = useState<number>(1);
   const { values, handleChange, handleSubmit, setFieldValue } = useFormikForm({
     initialValues: {
       search: "",
@@ -32,6 +32,7 @@ function App() {
 
   useGetUsers({
     results: 25,
+    page: page,
     nationalities: values.nationalities,
   });
 
@@ -54,7 +55,7 @@ function App() {
             {/* Search */}
             <Search />
             {/* Users List */}
-            <UsersList />
+            <UsersList setPage={setPage} />
           </main>
         </div>
       </Layout>

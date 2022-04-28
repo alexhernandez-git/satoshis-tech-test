@@ -2,25 +2,28 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
+import { number } from "yup";
 import usersState from "../state/usersState";
 
 interface UseGetUsersInterface {
   results?: number;
   nationalities?: string[];
+  page?: number;
 }
 
 const useGetUsers = ({
   results = 50,
   nationalities = [],
+  page = 1,
 }: UseGetUsersInterface = {}) => {
   const setUsers = useSetRecoilState(usersState);
 
   const { isLoading, error, data } = useQuery(
-    ["randomUsersData", results, nationalities],
+    ["randomUsersData", results, nationalities, page],
     () =>
       axios
         .get(
-          `https://randomuser.me/api/?inc=name,nat,picture,email,phone&results=${results}&nat=${nationalities
+          `https://randomuser.me/api/?inc=name,nat,picture,email,phone&results=${results}&page=${page}&nat=${nationalities
             .join(",")
             .toLowerCase()}`
         )
@@ -34,7 +37,19 @@ const useGetUsers = ({
       });
     } else {
       if (error) setUsers({ ...data, loading: false, error: error });
-      else setUsers({ ...data, loading: false, error: null });
+      else {
+        if (page === 1) {
+          setUsers({ ...data, loading: false, error: null });
+        } else {
+          setUsers((users) => ({
+            ...users,
+            ...data,
+            results: [...users.results, ...data.results],
+            loading: false,
+            error: null,
+          }));
+        }
+      }
     }
   }, [isLoading]);
 };
