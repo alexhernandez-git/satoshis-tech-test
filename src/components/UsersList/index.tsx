@@ -12,6 +12,8 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
   const {
     values: { search },
   } = useContext(AppContext);
+
+  // Filter users by first name and last name
   const filteredUsers = users.results.filter((user: UserType) => {
     const lowerCaseSearch = search.toLowerCase();
     const lowerCaseFirstName = user.name.first.toLowerCase();
@@ -19,15 +21,15 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
     const fullName = `${lowerCaseFirstName} ${lowerCaseLastName}`;
     return fullName.includes(lowerCaseSearch);
   });
+
   const onChangeVisibility = (visible: boolean) => {
     if (visible) {
-      console.warn(visible);
       setPage((page: number) => page + 1);
     }
   };
   return (
     <div className="mb-5">
-      {users.error ? (
+      {!users.loading && users.error ? (
         <span className="mt-4 text-sm text-red-500 dark:text-red-200 bg-white dark:bg-red-700 px-4 py-6 shadow sm:p-6 rounded-lg flex flex-1">
           It has been an error getting the users
         </span>
@@ -38,9 +40,11 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
               User not found
             </span>
           )}
-          {filteredUsers.map((user: UserType) => (
-            <UserCard user={user} key={user.email} />
-          ))}
+          <ul className="space-y-4">
+            {filteredUsers.map((user: UserType) => (
+              <UserCard user={user} key={user.email} />
+            ))}
+          </ul>
 
           <VisibilitySensor onChange={onChangeVisibility}>
             <div

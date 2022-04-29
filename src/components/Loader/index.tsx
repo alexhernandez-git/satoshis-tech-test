@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import ContentLoader from "react-content-loader";
 import useGetWindowDimensions from "../../hooks/useGetWindowDimensions";
 const Loader = () => {
-  const { width, height } = useGetWindowDimensions();
+  const { width } = useGetWindowDimensions();
 
   const [contentLoaderWidth, setContentLoaderWidth] = useState<number>(300);
   useEffect(() => {
-    console.log(width);
-    if (width < 400) {
+    if (width < 500) {
       setContentLoaderWidth(100);
     } else {
       setContentLoaderWidth(300);
