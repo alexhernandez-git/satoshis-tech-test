@@ -21,7 +21,7 @@ export const AppContext = createContext<AppContextInterface>({
 
 function App() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
   const { values, handleChange, handleSubmit, setFieldValue } = useFormikForm({
     initialValues: {
       search: "",

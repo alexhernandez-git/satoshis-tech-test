@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
 import { number } from "yup";
 import usersState from "../state/usersState";
+import { UsersInterface } from "../types";
 
 interface UseGetUsersInterface {
   results?: number;
@@ -30,9 +31,10 @@ const useGetUsers = ({
         .then((res) => res.data)
         .catch((err) => err.response)
   );
+
   useEffect(() => {
     if (isLoading) {
-      setUsers((users) => {
+      setUsers((users: UsersInterface) => {
         return { ...users, loading: true, error: error };
       });
     } else {
@@ -41,7 +43,7 @@ const useGetUsers = ({
         if (page === 1) {
           setUsers({ ...data, loading: false, error: null });
         } else {
-          setUsers((users) => ({
+          setUsers((users: UsersInterface) => ({
             ...users,
             ...data,
             results: [...users.results, ...data.results],
