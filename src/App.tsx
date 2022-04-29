@@ -31,7 +31,7 @@ function App() {
   });
 
   useGetUsers({
-    results: 25,
+    results: 8,
     page: page,
     nationalities: values.nationalities,
   });

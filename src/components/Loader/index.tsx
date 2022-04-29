@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ContentLoader from "react-content-loader";
 import useGetWindowDimensions from "../../hooks/useGetWindowDimensions";
 const Loader = () => {
-  const { width, height } = useGetWindowDimensions();
+  const { width } = useGetWindowDimensions();
 
   const [contentLoaderWidth, setContentLoaderWidth] = useState<number>(300);
   useEffect(() => {

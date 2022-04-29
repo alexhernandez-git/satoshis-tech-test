@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import UserCard from "../UserCard";
 import { UserType } from "../../types";
 
@@ -22,10 +22,12 @@ let user: UserType = {
 
 describe("UserCard Tests", () => {
   let component: any;
-  beforeEach(() => {
+  beforeEach(async () => {
     component = render(<UserCard user={user} />);
   });
   test("renders content", () => {
+    const toggleDiv = component.getByTestId("toggle-div");
+    expect(toggleDiv).toBeInTheDocument();
     component.getByText("011-962-7516");
   });
   test("test if toggle big screen button works", () => {

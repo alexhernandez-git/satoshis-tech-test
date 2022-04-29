@@ -40,9 +40,11 @@ const UsersList = ({ setPage }: { setPage: Function }) => {
               User not found
             </span>
           )}
-          {filteredUsers.map((user: UserType) => (
-            <UserCard user={user} key={user.email} />
-          ))}
+          <ul className="space-y-4">
+            {filteredUsers.map((user: UserType) => (
+              <UserCard user={user} key={user.email} />
+            ))}
+          </ul>
 
           <VisibilitySensor onChange={onChangeVisibility}>
             <div
