@@ -50,7 +50,7 @@ const Filters = ({ setPage }: { setPage: Function }) => {
         (nationality) => nationality !== value
       );
     }
-    setPage(0);
+    setPage(1);
     setFieldValue("nationalities", newNationalitiesArray);
   };
 
