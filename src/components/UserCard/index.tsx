@@ -1,7 +1,7 @@
 import useAccordion from "../../hooks/useAccordion";
 import { UserType } from "../../types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import VisibilitySensor from "react-visibility-sensor";
 
@@ -11,12 +11,7 @@ const UserCard = ({ user }: { user: UserType }) => {
 
   const userCardRef = useRef<any>();
   useOutsideClick(userCardRef, () => closeAccordion());
-  const [visible, setVisible] = useState<boolean>(false);
-  const onChangeVisibility = (visible: boolean) => {
-    if (visible) {
-      setVisible(true);
-    }
-  };
+
   return (
     <li
       className="pt-4 cursor-pointer"
@@ -63,13 +58,6 @@ const UserCard = ({ user }: { user: UserType }) => {
             {show ? "See less" : "See more"}
           </span>
         </div>
-
-        <span
-          data-testid={"small-screen-button"}
-          className="block text-center sm:hidden w-full items-center px-4 py-2 mt-4 shadow-sm text-sm font-medium rounded-3xl text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:to-pink-600"
-        >
-          {show ? "See less" : "See more"}
-        </span>
         <div
           ref={contentSpace}
           style={{ maxHeight: `${height}` }}
@@ -124,6 +112,12 @@ const UserCard = ({ user }: { user: UserType }) => {
             </div>
           </div>
         </div>
+        <span
+          data-testid={"small-screen-button"}
+          className="block text-center sm:hidden w-full items-center px-4 py-2 mt-4 shadow-sm text-sm font-medium rounded-3xl text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:to-pink-600"
+        >
+          {show ? "See less" : "See more"}
+        </span>
       </div>
     </li>
   );
