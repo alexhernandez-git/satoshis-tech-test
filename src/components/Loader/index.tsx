@@ -6,8 +6,7 @@ const Loader = () => {
 
   const [contentLoaderWidth, setContentLoaderWidth] = useState<number>(300);
   useEffect(() => {
-    console.log(width);
-    if (width < 400) {
+    if (width < 500) {
       setContentLoaderWidth(100);
     } else {
       setContentLoaderWidth(300);
