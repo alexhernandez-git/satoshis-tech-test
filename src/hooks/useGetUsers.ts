@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
-import { number } from "yup";
 import usersState from "../state/usersState";
 import { UsersInterface } from "../types";
 

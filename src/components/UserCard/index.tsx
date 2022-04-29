@@ -3,7 +3,6 @@ import { UserType } from "../../types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
-import VisibilitySensor from "react-visibility-sensor";
 
 const UserCard = ({ user }: { user: UserType }) => {
   const { show, height, toggleAccordion, closeAccordion, contentSpace } =
